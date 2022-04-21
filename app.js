@@ -12,7 +12,8 @@ mongoose.connect('mongodb://localhost:27017/rotten-potatoes');
 const Review = mongoose.model('Review', {
     title: String,
     movieTitle: String,
-    description: String
+    description: String,
+    rating: Number
 });
 
 // INDEX
@@ -36,10 +37,22 @@ app.post('/reviews', (req, res) => {
     Review.create(req.body)
         .then((review) => {
             console.log(review)
-            res.redirect('/')
+            res.redirect(`/reviews/${review._id}`)
         }).catch((err) => {
             console.log(err.message)
     })
+})
+
+//SHOW
+
+app.get('/reviews/:id', (req,res) => {
+    Review.findById(req.params.id)
+        .then((review) => {
+            res.render('reviews-one', {review:review})
+        })
+        .catch((err) => {
+            console.log(err.message)
+        })
 })
 
 
