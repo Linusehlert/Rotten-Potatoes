@@ -6,6 +6,10 @@
 <p><%= review.rating %></p>
 
 <a href="/reviews/<%= review._id %>/edit">Edit</a><br>
+<p>
+<form method="POST" action="/reviews/<%= review._id %>?_method=DELETE">
+    <button type="submit">Delete</button>
+</form></p>
 <a href="/">Back</a>
 
 <%- include('partials/footer.ejs') %>

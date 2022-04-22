@@ -78,6 +78,17 @@ app.patch('/reviews/:id', (req, res) => {
         })
 })
 
+//DELETE
+app.delete('/reviews/:id', (req, res) => {
+    Review.findByIdAndRemove(req.params.id)
+        .then(
+            res.redirect('/')
+        )
+        .catch(err => {
+            console.log(err.message)
+        })
+})
+
 app.listen(3000, () => {
     console.log('Listening...')
 })
