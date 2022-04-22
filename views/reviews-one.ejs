@@ -4,5 +4,8 @@
 <sm><%= review.movieTitle %></sm>
 <p><%= review.description %></p>
 <p><%= review.rating %></p>
+
+<a href="/reviews/<%= review._id %>/edit">Edit</a><br>
 <a href="/">Back</a>
+
 <%- include('partials/footer.ejs') %>
